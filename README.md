@@ -3,5 +3,4 @@ TravelManagerment
 
 hello github
 
-一：
-aaa
+不会用git,摸索中..
