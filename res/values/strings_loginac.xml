@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="loginac_account">帐号</string>
+    <string name="loginac_password">密码</string>
+    <string name="loginac_btn_login">登录</string>
+    
+</resources>

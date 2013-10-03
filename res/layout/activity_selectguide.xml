@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/ac_bg">
+    
+    <include android:id="@+id/selectguideac_tourgroup_info" 
+        android:visibility="gone"
+        layout="@layout/view_card_tourgourp"/>
+    
+    <TextView
+        android:id="@+id/selectguideac_tv_selectedguides"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/selectguideac_tourgroup_info"
+        android:padding="10dip"
+        android:text="请选择导游"
+        android:textSize="20sp" />
+
+    <LinearLayout
+        android:id="@+id/selectguideac_ll_btns"
+        style="?android:attr/buttonBarStyle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:orientation="horizontal" >
+
+        <Button
+            android:id="@+id/selectguideac_btn_cancel"
+            style="?android:attr/buttonBarButtonStyle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/selectable_item_background"
+            android:text="返回" />
+
+        <Button
+            android:id="@+id/selectguideac_btn_ok"
+            style="?android:attr/buttonBarButtonStyle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/selectable_item_background"
+            android:text="提交" />
+    </LinearLayout>
+
+    <View
+        android:id="@+id/selectguideac_divider"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_above="@id/selectguideac_ll_btns"
+        android:background="?android:attr/dividerHorizontal" />
+
+    <ListView
+        android:id="@+id/selectguideac_list"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/selectguideac_divider"
+        android:layout_below="@id/selectguideac_tv_selectedguides"
+        android:layout_marginLeft="10dip"
+        android:layout_marginRight="10dip"/>
+
+</RelativeLayout>

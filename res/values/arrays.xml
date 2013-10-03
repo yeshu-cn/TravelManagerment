@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string-array name="planets_array">
+　　        <item>导游部</item>
+　　        <item>个人信息</item>
+　　        <item>设置</item>
+　</string-array>  
+</resources>

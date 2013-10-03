@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="20dip">
+    
+    <TextView android:id="@+id/guide_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="管英杰"/>
+    
+    <TextView android:id="@+id/guide_phone"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:layout_marginLeft="20dip"
+        android:layout_toRightOf="@id/guide_name"
+        android:text="18628381377"/>
+    
+    <ImageView android:id="@+id/guide_edit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:src="@drawable/ic_edit_profile"/>
+
+</RelativeLayout>

@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+     >
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_marginTop="10dip"
+        android:paddingBottom="20dip"
+        android:background="@drawable/list7"
+        android:paddingLeft="10dip"
+        android:paddingRight="10dip"
+        android:paddingTop="10dip" >
+
+        <TextView
+            android:id="@+id/tourgroup_label_index"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/tourgroup_index"
+            android:textColor="#000000"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/tourgroup_tv_index"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/tourgroup_label_index"
+            android:text="154"
+            android:textColor="#000000"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/tourgroup_tv_line"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dip"
+            android:layout_toRightOf="@id/tourgroup_tv_index"
+            android:gravity="center"
+            android:text="庐山南昌金刚山双卧七日游"
+            android:textColor="#000000"
+            android:textSize="17sp" />
+
+        <TextView
+            android:id="@+id/tourgroup_label_recvdate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tourgroup_tv_line"
+            android:text="@string/tourgroup_recv_date"
+            android:textColor="#000000"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/tourgroup_tv_recvdate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tourgroup_tv_line"
+            android:layout_toRightOf="@id/tourgroup_label_recvdate"
+            android:text="2013-08-11"
+            android:textColor="#000000"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/tourgroup_label_leavedate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tourgroup_tv_recvdate"
+            android:text="@string/tourgroup_leave_date"
+            android:textColor="#000000"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/tourgroup_tv_leavedate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tourgroup_tv_recvdate"
+            android:layout_toRightOf="@id/tourgroup_label_leavedate"
+            android:text="2013-08-15"
+            android:textColor="#000000"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/tourgroup_label_type"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tourgroup_tv_leavedate"
+            android:text="@string/tourgroup_type"
+            android:textColor="#000000"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/tourgroup_tv_type"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tourgroup_tv_leavedate"
+            android:layout_toRightOf="@id/tourgroup_label_type"
+            android:text="兰溪百姓团队"
+            android:textColor="#000000"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/tourgroup_label_isshop"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tourgroup_tv_type"
+            android:text="@string/tourgroup_isshop"
+            android:textColor="#000000"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/tourgroup_tv_isshop"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tourgroup_tv_type"
+            android:layout_toRightOf="@id/tourgroup_label_isshop"
+            android:text="是"
+            android:textColor="#000000"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/tourgroup_label_number"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tourgroup_tv_isshop"
+            android:text="@string/tourgroup_number"
+            android:textColor="#000000"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/tourgroup_tv_number"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tourgroup_tv_isshop"
+            android:layout_toRightOf="@id/tourgroup_label_number"
+            android:text="35"
+            android:textColor="#000000"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/tourgroup_label_sumbiter"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tourgroup_tv_number"
+            android:text="@string/tourgroup_submit"
+            android:textColor="#000000"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/tourgroup_tv_sumbiter"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tourgroup_tv_number"
+            android:layout_toRightOf="@id/tourgroup_label_sumbiter"
+            android:text="宗秀芳-----西安办"
+            android:textColor="#000000"
+            android:textSize="16sp" />
+
+        <LinearLayout
+            android:id="@+id/tourgroup_devider"
+            android:layout_width="fill_parent"
+            android:layout_height="1dip"
+            android:layout_below="@id/tourgroup_tv_sumbiter"
+            android:layout_marginBottom="10dip"
+            android:layout_marginTop="8dip"
+            android:background="#C1C1C1"
+            android:orientation="horizontal" />
+
+        <TextView
+            android:id="@+id/tourgroup_label_guidename"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tourgroup_devider"
+            android:text="@string/tourgroup_guides_number"
+            android:textColor="#000000"
+            android:textSize="16sp" />
+
+         <TextView
+            android:id="@+id/tourgroup_tv_guides"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tourgroup_devider"
+            android:layout_toRightOf="@id/tourgroup_label_guidename"
+            android:textColor="#000000"
+            android:textSize="16sp" />
+
+
+    </RelativeLayout>
+
+</LinearLayout>
