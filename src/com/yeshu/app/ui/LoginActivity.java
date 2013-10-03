@@ -4,7 +4,6 @@
 package com.yeshu.app.ui;
 
 import org.apache.http.cookie.Cookie;
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -68,7 +67,7 @@ public class LoginActivity extends BaseActivity{
 		
 		
 		final ProgressDialog dialog = new ProgressDialog(this);
-		dialog.setMessage("ÕýÔÚµÇÂ¼...");
+		dialog.setMessage("ï¿½ï¿½ï¿½Úµï¿½Â¼...");
 		dialog.show();
 		Api.getInstance().login(username, pwd, new JsonHttpResponseHandler(){
 	
@@ -91,7 +90,7 @@ public class LoginActivity extends BaseActivity{
 						startActivity(it);
 						LoginActivity.this.finish();
 					}else{
-						Toast.makeText(LoginActivity.this, "µÇÂ¼Ê§°Ü!", Toast.LENGTH_SHORT).show();
+						Toast.makeText(LoginActivity.this, "ï¿½ï¿½Â¼Ê§ï¿½ï¿½!", Toast.LENGTH_SHORT).show();
 					}
 				} catch (JSONException e) {
 					e.printStackTrace();
