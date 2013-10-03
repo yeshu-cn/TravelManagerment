@@ -23,7 +23,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="15dip"
-        android:text="姓名： 管仕元"
+        android:text="姓名： 路人甲"
         android:textSize="20sp" />
 
     <TextView
