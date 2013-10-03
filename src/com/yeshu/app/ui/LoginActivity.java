@@ -18,6 +18,7 @@ import android.widget.Toast;
 
 import com.loopj.android.http.JsonHttpResponseHandler;
 import com.yeshu.app.R;
+import com.yeshu.app.User;
 import com.yeshu.app.net.Api;
 import com.yeshu.app.net.WebRestClient;
 import com.yeshu.app.ui.base.BaseActivity;
@@ -31,6 +32,7 @@ import com.yeshu.app.utils.LogUtil;
  */
 
 public class LoginActivity extends BaseActivity{
+	private static final String TAG = "LoginActivity";
 	private Button btnLogin;
 	private EditText etAccount;
 	private EditText etPassword;
@@ -44,6 +46,9 @@ public class LoginActivity extends BaseActivity{
 		init();
 	}
 	
+	/**
+	 * 初始化控件
+	 */
 	private void init(){
 		btnLogin = (Button)findViewById(R.id.loginac_btn_login);
 		etAccount = (EditText)findViewById(R.id.logingac_et_account);
@@ -60,37 +65,44 @@ public class LoginActivity extends BaseActivity{
 	}
 
 	
-
+	/**
+	 * 登录
+	 */
 	private void login(){
 		String username = etAccount.getText().toString();
 		String pwd = etPassword.getText().toString();
 		
 		
 		final ProgressDialog dialog = new ProgressDialog(this);
-		dialog.setMessage("���ڵ�¼...");
+		dialog.setMessage(getString(R.string.loginac_logining));
 		dialog.show();
 		Api.getInstance().login(username, pwd, new JsonHttpResponseHandler(){
 	
 			@Override
 			public void onFailure(Throwable e, JSONObject errorResponse) {
-//				dialog.dismiss();
-				LogUtil.i("yeshu", "error-->" + errorResponse.toString());
+				dialog.dismiss();
+				LogUtil.i(TAG, "login request onFailure:" + errorResponse.toString());
 				super.onFailure(e, errorResponse);
 			}
 
 			@Override
 			public void onSuccess(JSONObject response) {
-				LogUtil.i("yeshu", response.toString());
+				LogUtil.i(TAG, "login request onSuccess:" + response.toString());
 				dialog.dismiss();
 				int result;
 				try {
 					result = response.getInt("result");
-					if(result == Api.LOGIN_SUCCESS){			
+					if(result == Api.LOGIN_SUCCESS){	
+						//保存用户信息进入全局变量
+						User.getInstance().setUsername(response.getString("nickname"));
+						User.getInstance().setPhone(response.getString("phone"));
+						User.getInstance().setRolename("rolename");
+						
 						Intent it = new Intent(LoginActivity.this, MainActivity.class);
 						startActivity(it);
 						LoginActivity.this.finish();
 					}else{
-						Toast.makeText(LoginActivity.this, "��¼ʧ��!", Toast.LENGTH_SHORT).show();
+						Toast.makeText(LoginActivity.this, getString(R.string.loginac_login_failed), Toast.LENGTH_SHORT).show();
 					}
 				} catch (JSONException e) {
 					e.printStackTrace();
@@ -99,19 +111,11 @@ public class LoginActivity extends BaseActivity{
 		});
 	}
 	
-	public void logout(){
-		Api.getInstance().logout(new JsonHttpResponseHandler(){
-
-			@Override
-			public void onSuccess(JSONObject response) {
-				System.out.println("---->" + response.toString());
-				
-				WebRestClient.getCookieStore().clear();
-				testCookie();
-			}
-		});
-	}
 	
+	/****************test code*****************************/
+	/**
+	 * 测试用、看看cookie里有什么东西
+	 */
 	public void testCookie(){
 		for(Cookie cookie : WebRestClient.getCookieStore().getCookies()){
 			System.out.println("----------xx>" + cookie.toString());

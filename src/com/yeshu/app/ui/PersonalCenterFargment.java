@@ -33,8 +33,10 @@ public class PersonalCenterFargment extends BaseFragment{
 		super.onCreateView(inflater, container, savedInstanceState);
 		
 		View view = inflater.inflate(R.layout.fragment_personalcenter, null);
+		
 		return view;
 	}
+	
     
 	
     
