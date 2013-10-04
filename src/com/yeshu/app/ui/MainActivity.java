@@ -107,10 +107,11 @@ public class MainActivity extends BaseSherlockFragmentActivity {
     
     @Override 
 	public boolean dispatchKeyEvent(KeyEvent event) { 
+    	//ç‚¹å‡»ä¸¤æ¬¡é€€å‡º
 		int keyCode = event.getKeyCode();
 		if(keyCode == KeyEvent.KEYCODE_BACK && event.getAction() == KeyEvent.ACTION_DOWN) {
-            if((System.currentTimeMillis() - m_exitTime) > 2000) { //System.currentTimeMillis()ÎŞÂÛºÎÊ±µ÷ÓÃ£¬¿Ï¶¨´óÓÚ2000 
-             Toast.makeText(this, "ÔÙ°´Ò»´ÎÍË³ö³ÌĞò",Toast.LENGTH_SHORT).show();                                  
+            if((System.currentTimeMillis() - m_exitTime) > 2000) { 
+             Toast.makeText(this, getString(R.string.mainac_exit),Toast.LENGTH_SHORT).show();                                  
              m_exitTime = System.currentTimeMillis();  
             } else {  
                 finish();  
@@ -121,12 +122,14 @@ public class MainActivity extends BaseSherlockFragmentActivity {
 	    return super.dispatchKeyEvent(event); 
 	} 
     
-
+    /**
+     * åˆå§‹è®¾ç½®å·¦ä¾§å¯¼èˆªæ 
+     */
     private void initSideMenu(){
     	ArrayList<SideMenuItem> sideMenus = new ArrayList<SideMenuItem>();
-    	sideMenus.add(new SideMenuItem("µ¼ÓÎ²¿", R.drawable.ic_menu_guidedepartment));
-    	sideMenus.add(new SideMenuItem("¸öÈËÖĞĞÄ", R.drawable.ic_menu_personal));
-    	sideMenus.add(new SideMenuItem("ÉèÖÃ", R.drawable.ic_menu_setting));
+    	sideMenus.add(new SideMenuItem(getString(R.string.mainac_guidedepartment), R.drawable.ic_menu_guidedepartment));
+    	sideMenus.add(new SideMenuItem(getString(R.string.mainac_personalcenter), R.drawable.ic_menu_personal));
+    	sideMenus.add(new SideMenuItem(getString(R.string.mainac_setting), R.drawable.ic_menu_setting));
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         mDrawerList = (ListView) findViewById(R.id.left_drawer);
         // Add header news title
@@ -206,20 +209,25 @@ public class MainActivity extends BaseSherlockFragmentActivity {
         }
     }
     
-
+    
+    /**
+     * MainActivityä¸­åŠ è½½æ˜¾ç¤ºå¯¼æ¸¸éƒ¨çš„é¡µé¢
+     */
     private void showGuideDepartment(){
         TabsAdapter adapter = new TabsAdapter(getSupportFragmentManager());
-        adapter.addTab(new TabFragment(new GuideDispatchFragment(), "µ¼ÓÎÅÅÍÅ"));
-        adapter.addTab(new TabFragment(new GuideManagermentFragment(), "µ¼ÓÎ¹ÜÀí"));
-        adapter.addTab(new TabFragment(new AddGuideFragment(), "Ôö¼Óµ¼ÓÎ"));
-          
+        adapter.addTab(new TabFragment(new GuideDispatchFragment(), getString(R.string.mainac_dispatching)));
+        adapter.addTab(new TabFragment(new GuideManagermentFragment(), getString(R.string.mainac_guidelist)));
+        adapter.addTab(new TabFragment(new AddGuideFragment(), getString(R.string.mainac_addguide)));
+        
+        //è®¾ç½®MainActivityä¸­çš„ViewPageråŠ è½½å¯¼æ¸¸éƒ¨é¡µé¢çš„é€‚é…å™¨
         ViewPager pager = (ViewPager)findViewById(R.id.pager);
         pager.setAdapter(adapter);
 
         TabPageIndicator indicator = (TabPageIndicator)findViewById(R.id.indicator);
         indicator.setViewPager(pager);
         indicator.setVisibility(View.VISIBLE);
-        //µ÷ÓÃËütab±êÇ©À¸²Å»áË¢ĞÂUI
+        
+        //è¿™å¥ä¸€å®šè¦ï¼Œåˆ·æ–°Tabçš„UIçš„
         indicator.notifyDataSetChanged();
         indicator.setOnPageChangeListener(new OnPageChangeListener() {
 			
@@ -246,34 +254,39 @@ public class MainActivity extends BaseSherlockFragmentActivity {
 		});
     }
     
+    /**
+     * åŠ è½½æ˜¾ç¤ºä¸ªäººä¸­å¿ƒçš„é¡µé¢
+     */
     private void showPersonalCenter(){
         TabsAdapter adapter = new TabsAdapter(getSupportFragmentManager());
-        adapter.addTab(new TabFragment(new PersonalCenterFargment(), "¸öÈËÖĞĞÄ"));
+        adapter.addTab(new TabFragment(new PersonalCenterFargment(), getString(R.string.mainac_selfinfo)));
           
         ViewPager pager = (ViewPager)findViewById(R.id.pager);
         pager.setAdapter(adapter);
 
+        //è¿™ä¸ªé¡µé¢åªæœ‰ä¸€ä¸ªTabï¼Œå°±ä¸æƒ³æ˜¾ç¤ºTabæ ‡ç­¾äº†
         TabPageIndicator indicator = (TabPageIndicator)findViewById(R.id.indicator);
         indicator.setViewPager(pager);
         indicator.setVisibility(View.GONE);
         
-        //µ÷ÓÃËütab±êÇ©À¸²Å»áË¢ĞÂUI
         indicator.notifyDataSetChanged();
     }
     
+    /**
+     * åŠ è½½æ˜¾ç¤ºè®¾ç½®é¡µé¢
+     */
     private void showSetting(){
         TabsAdapter adapter = new TabsAdapter(getSupportFragmentManager());
-        adapter.addTab(new TabFragment(new SettingFragment(), "ÉèÖÃ"));
+        adapter.addTab(new TabFragment(new SettingFragment(), "ï¿½ï¿½ï¿½ï¿½"));
           
         ViewPager pager = (ViewPager)findViewById(R.id.pager);
         pager.setAdapter(adapter);
 
+        //ä¸æ˜¾ç¤ºTabæ ‡ç­¾
         TabPageIndicator indicator = (TabPageIndicator)findViewById(R.id.indicator);
         indicator.setViewPager(pager);
         indicator.setVisibility(View.GONE);
         
-        
-        //µ÷ÓÃËütab±êÇ©À¸²Å»áË¢ĞÂUI
         indicator.notifyDataSetChanged();
     }
 
@@ -303,7 +316,6 @@ public class MainActivity extends BaseSherlockFragmentActivity {
 	public boolean onPrepareOptionsMenu(Menu menu) {
 		MenuItem refreshMenu = menu.findItem(R.id.menu_refresh);
 		
-		//ÕâÀïÓÃ²»µ½actionbarÉÏµÄmenu£¬¾Í°ÑÄãÃÇ¶¼Òş²ØÁË°É¡£²»ÏëÉ¾µô
 		//refreshMenu.setVisible(showRefresh);
 		refreshMenu.setVisible(false);
 		
@@ -313,7 +325,7 @@ public class MainActivity extends BaseSherlockFragmentActivity {
 	@Override
     public boolean onOptionsItemSelected(MenuItem item) {
     	/**
-    	 * ºÃÏñÊÇabsÕâÀïÓĞbug£¬²»ÄÜ×Ô¶¯´¦ÀísidemenuµÄÕ¹¿ªÊÕËõ£¬ËùÒÔÕâÀï¾Í×Ô¼ºÊµÏÖ
+    	 * å¥½åƒæ˜¯ç”¨æ¥è§£å†³ActionSherlockBarçš„ä¸€ä¸ªbugï¼Œä¸èƒ½è§¦å‘Home iconï¼Œæ‰‹åŠ¨å†™ä»£ç ç‚¹å‡»æ—¶å…³é—­
     	 */
     	if (item.getItemId() == android.R.id.home) {
 

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="mainac_exit">再点击一次退出</string>
+    <string name="mainac_guidedepartment">导游部</string>
+    <string name="mainac_personalcenter">个人中心</string>
+    <string name="mainac_setting">设置</string>
+    <string name="mainac_dispatching">团队排团</string>
+    <string name="mainac_guidelist">导游列表</string>
+    <string name="mainac_addguide">添加导游</string>
+    <string name="mainac_selfinfo">我的信息</string>
+</resources>

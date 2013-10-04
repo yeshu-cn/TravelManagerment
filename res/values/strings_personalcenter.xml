@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<string name="personalinfo_baseinfo">基本信息</string>
+	<string name="personalinfo_username">姓名：%s</string>
+	<string name="personalinfo_rolename">职位：%s</string>
+	<string name="personalinfo_phone">电话：%s</string>    
+</resources>

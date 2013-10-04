@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="dispatch_refreshdata_over">数据刷新完毕.</string>
+    <string name="dispatch_getdata_failed">数据获取失败!</string>
+    <string name="dispatch_dataisover">"已是最后数据！"</string>
+    <string name="dispatch_loading_data">加载数据中....</string>
+</resources>
