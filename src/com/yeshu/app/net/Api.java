@@ -22,11 +22,12 @@ public class Api {
     private static final String API_GETGUIDElIST = "getGuideList";
     private static final String API_GETTOURGROUPLIST = "getTourGroupList";
     private static final String API_DISPATCHGUIDE = "dispatchGuide";
+    private static final String API_GETUSERINFO = "getUserInfo";
     
-    //µÇÂ¼·µ»Ø×´Ì¬Âë
+    //ç™»å½•è¿”å›çŠ¶æ€
 	public static final int LOGIN_SUCCESS = 0;
 	public static final int LOGIN_FAILED = 1;
-	//Ìá½»ÅÅÍÅĞÅÏ¢·µ»Ø×´Ì¬Âë
+	//å¯¼æ¸¸æ’å›¢è¿”å›çŠ¶æ€
 	public static final int DISPATCHGUIDE_SUCCESS = 0;
 	public static final int DISPATCHGUIDE_FAILED = 1;
 	
@@ -52,8 +53,8 @@ public class Api {
 	
 	
 	/**
-	 * »ñÈ¡ÍÅ¶ÓÀà±í
-	 * @param pageIndex	Ò³Êı£¬Ä¬ÈÏ»áÏÔÊ¾20ÌõÊı¾İ
+	 * è·å–å›¢é˜Ÿä¿¡æ¯
+	 * @param pageIndex	è·å–ç¬¬å‡ é¡µçš„å¯¼æ¸¸ä¿¡æ¯ã€é»˜è®¤ä¸€é¡µæ˜¾ç¤º20æ¡æ•°æ®
 	 * @param reponseHandler
 	 */
 	public void getTourGroupList(int pageIndex, JsonHttpResponseHandler reponseHandler){
@@ -68,7 +69,7 @@ public class Api {
 	}
 	
 	/**
-	 * Ìá½»ÅÅÍÅĞÅÏ¢
+	 * æäº¤æ’å›¢ä¿¡æ¯
 	 */
 	public void submitDispatchInfo(int groupId, String guides, JsonHttpResponseHandler responseHandler){
 		RequestParams params = new RequestParams();
@@ -77,6 +78,9 @@ public class Api {
 		WebRestClient.post(API_DISPATCHGUIDE, params, responseHandler);
 	}
 	
+	public void getUserInfo(JsonHttpResponseHandler responseHandler){
+		WebRestClient.post(API_GETUSERINFO, null, responseHandler);
+	}
 	
 	
 }

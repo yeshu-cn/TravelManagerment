@@ -32,7 +32,7 @@ public class MyApplication extends Application{
 	}
 
 	/**
-	 * Ö÷Ïß³ÌÖĞÔËĞĞ
+	 * UIçº¿ç¨‹ä¸­æ‰§è¡Œ
 	 * @param runnable
 	 */
 	public void runOnUIThread(Runnable runnable){
@@ -49,7 +49,7 @@ public class MyApplication extends Application{
 	
 	
 	/**
-	 * Ïß³Ì³ØÖĞ¿ØÖÆÆô¶¯ºóÌ¨Ïß³Ì
+	 * åå°çº¿ç¨‹ä¸­æ‰§è¡Œ
 	 * @param runnable
 	 */
 	public void runOnBackgroundThread(Runnable runnable){

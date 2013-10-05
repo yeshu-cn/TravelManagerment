@@ -68,7 +68,7 @@ public class GuideManagermentFragment extends BaseFragment {
 	}
 	
 	
-	/********ÉúÃüÖÜÆÚ²âÊÔ--------------------------->********************/
+	/********test fragment lifecycle--------------------------->********************/
 	
 	@Override
 	public void onAttach(Activity activity) {
@@ -145,7 +145,7 @@ public class GuideManagermentFragment extends BaseFragment {
 		listview = (ListView) view.findViewById(R.id.gmanagerment_lv);
 
 		mAdapter = new MyAdapter(getActivity());
-		//ÎªÁËÈÃ×îºóÒ»¸öpopupWindowÏÔÊ¾È«£¬ÔÚµ×²¿¼Ó¸ö¿Õ°×µÄview
+		//Îªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½popupWindowï¿½ï¿½Ê¾È«ï¿½ï¿½ï¿½Úµ×²ï¿½ï¿½Ó¸ï¿½ï¿½Õ°×µï¿½view
 		TextView footerView = new TextView(getActivity());
 		footerView.setHeight(100);
 		listview.addFooterView(footerView);
@@ -153,12 +153,12 @@ public class GuideManagermentFragment extends BaseFragment {
 	}
 
 	private void initData() {
-		// »ñÈ¡µ¼ÓÎÁÐ±í
+		// ï¿½ï¿½È¡ï¿½ï¿½ï¿½ï¿½ï¿½Ð±ï¿½
 		Api.getInstance().getGuideList(new JsonHttpResponseHandler() {
 
 			@Override
 			public void onSuccess(JSONArray response) {
-				LogUtil.i("yeshu", "-->" + response.toString());
+//				LogUtil.i("yeshu", "-->" + response.toString());
 				try {
 					ArrayList<GuideInfo> guideList = getGuideListFromResponse(response);
 					mAdapter.updateData(guideList);
@@ -182,8 +182,9 @@ public class GuideManagermentFragment extends BaseFragment {
 			int id = jObject.getInt("id");
 			String name = jObject.getString("name");
 			String phone = jObject.getString("phone");
-
-			list.add(new GuideInfo(id, name, phone));
+			String nickname = jObject.getString("nickname");
+    		
+    		list.add(new GuideInfo(id, name, phone, nickname));
 		}
 
 		return list;
@@ -236,7 +237,7 @@ public class GuideManagermentFragment extends BaseFragment {
 			}
 
 			final GuideInfo info = guideList.get(position);
-			holder.tvName.setText(info.getName());
+			holder.tvName.setText(info.getNickname());
 			holder.tvPhone.setText(info.getPhone());
 			holder.ivEdit.setVisibility(View.GONE);
 
@@ -277,7 +278,7 @@ public class GuideManagermentFragment extends BaseFragment {
 				popupWindow.dismiss();
 				
 				if(null != clickGuide){
-					//´òµç»°
+					//ï¿½ï¿½ç»°
 					Uri uri = Uri.parse("tel:"+clickGuide.getPhone());
 					Intent intent = new Intent(Intent.ACTION_DIAL, uri);
 					startActivity(intent);
@@ -291,7 +292,7 @@ public class GuideManagermentFragment extends BaseFragment {
 				popupWindow.dismiss();
 				
 				if(null != clickGuide){
-					Toast.makeText(getActivity(), "ÔÝ²»¿ªÍ¨±à¼­¹¦ÄÜ", Toast.LENGTH_SHORT).show();
+					Toast.makeText(getActivity(), "ï¿½Ý²ï¿½ï¿½ï¿½Í¨ï¿½à¼­ï¿½ï¿½ï¿½ï¿½", Toast.LENGTH_SHORT).show();
 				}
 			}
 		});
@@ -299,10 +300,10 @@ public class GuideManagermentFragment extends BaseFragment {
 		popupWindow = new PopupWindow(view,
 				LinearLayout.LayoutParams.WRAP_CONTENT,
 				LinearLayout.LayoutParams.WRAP_CONTENT, true);
-		popupWindow.setBackgroundDrawable(new ColorDrawable(0));// µã»÷´°¿ÚÍâÏûÊ§
+		popupWindow.setBackgroundDrawable(new ColorDrawable(0));// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê§
 		popupWindow.setFocusable(true);
 		popupWindow.setTouchable(true);
-		popupWindow.setOutsideTouchable(true);// µã»÷´°¿ÚÍâÏûÊ§,ÐèÒªÉèÖÃ±³¾°¡¢½¹µã¡¢touchable¡¢update
+		popupWindow.setOutsideTouchable(true);// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê§,ï¿½ï¿½Òªï¿½ï¿½ï¿½Ã±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ã¡¢touchableï¿½ï¿½update
 		popupWindow.update();
 	}
 

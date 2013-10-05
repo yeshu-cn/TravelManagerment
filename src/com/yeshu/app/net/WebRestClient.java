@@ -9,8 +9,8 @@ import com.loopj.android.http.PersistentCookieStore;
 import com.loopj.android.http.RequestParams;
 
 public class WebRestClient {
-//    private static final String BASE_URL = "http://192.168.1.103/app/Index.php/Admin/API/";
-	private static final String BASE_URL = "http://jxgzl.sinaapp.com/index.php/Admin/API/";
+    private static final String BASE_URL = "http://192.168.1.102/sae/1/Index.php/Admin/API/";
+//	private static final String BASE_URL = "http://jxgzl.sinaapp.com/index.php/Admin/API/";
     
     private static AsyncHttpClient client = new AsyncHttpClient();
     
@@ -34,7 +34,7 @@ public class WebRestClient {
     }
     
     /**
-     * ³õÊ¼»¯ÉèÖÃ´æ´¢cookie
+     * ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½ï¿½Ã´æ´¢cookie
      * @param ctx
      */
     public static void init(Context ctx){

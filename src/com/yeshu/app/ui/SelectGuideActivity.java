@@ -49,7 +49,7 @@ public class SelectGuideActivity extends BaseActivity{
 	private MyAdapter mAdapter;
 	private Button btnCancel;
 	private Button btnOk;
-	private String guides = "";	//—°‘Òµƒµº”Œ
+	private String guides = "";	//Â∑≤ÈÄâÊã©ÁöÑÂØºÊ∏∏
 	
 	private ArrayList<GuideInfo> selectedGuides = new ArrayList<GuideInfo>();
 	private TourGroupInfo groupInfo;
@@ -92,13 +92,13 @@ public class SelectGuideActivity extends BaseActivity{
 			public void onClick(View v) {
 				
 				for(GuideInfo guide : selectedGuides){
-					guides = guides + guide.getName() + " ";
+					guides = guides + guide.getNickname() + " ";
 				}
 				
 				AlertDialog.Builder builder  = new AlertDialog.Builder(SelectGuideActivity.this);
-				builder.setTitle("»∑∂®≈≈Õ≈?");
+				builder.setTitle(getString(R.string.selectguide_selectedguides));
 				builder.setMessage(guides);
-				builder.setPositiveButton("Ã·Ωª", new DialogInterface.OnClickListener() {
+				builder.setPositiveButton(getString(R.string.selectguide_ok), new DialogInterface.OnClickListener() {
 					
 					@Override
 					public void onClick(DialogInterface dialog, int which) {
@@ -106,7 +106,7 @@ public class SelectGuideActivity extends BaseActivity{
 					}
 				});
 				
-				builder.setNegativeButton("»°œ˚", new android.content.DialogInterface.OnClickListener() {
+				builder.setNegativeButton(getString(R.string.selectguide_cancel), new android.content.DialogInterface.OnClickListener() {
 					
 					@Override
 					public void onClick(DialogInterface dialog, int which) {
@@ -121,7 +121,7 @@ public class SelectGuideActivity extends BaseActivity{
 	}
 	
 	private void initData(){
-    	//ªÒ»°µº”Œ¡–±Ì
+    	//get guide list data
     	Api.getInstance().getGuideList(new JsonHttpResponseHandler(){
 
 			@Override
@@ -149,8 +149,9 @@ public class SelectGuideActivity extends BaseActivity{
     		int id = jObject.getInt("id");
     		String name = jObject.getString("name");
     		String phone = jObject.getString("phone");
+    		String nickname = jObject.getString("nickname");
     		
-    		list.add(new GuideInfo(id, name, phone));
+    		list.add(new GuideInfo(id, name, phone, nickname));
     	}
 	
     	return list;
@@ -204,7 +205,7 @@ public class SelectGuideActivity extends BaseActivity{
 			
 			
 			final GuideInfo info = guideList.get(position);
-			holder.tvName.setText(info.getName());
+			holder.tvName.setText(info.getNickname());
 			
 			
 			holder.cbSelect.setOnCheckedChangeListener(new OnCheckedChangeListener() {
@@ -245,11 +246,9 @@ public class SelectGuideActivity extends BaseActivity{
 	}
 
 	/**
-	 * Ã·Ωª≈≈Õ≈–≈œ¢
+	 * Á°ÆËÆ§Êèê‰∫§„ÄÅÊéíÂõ¢ÂØºÊ∏∏
 	 */
 	private void submitDispatchGuideInfo(){
-		//œ‘ æΩ¯∂»øÚ
-		
 		final ProgressDialog dialog = new ProgressDialog(this);
 		dialog.show();
 		
@@ -263,7 +262,8 @@ public class SelectGuideActivity extends BaseActivity{
 				try {
 					result = response.getInt("result");
 					if(Api.DISPATCHGUIDE_SUCCESS == result){
-						Toast.makeText(SelectGuideActivity.this, "≈≈Õ≈≥…π¶", Toast.LENGTH_SHORT).show();
+						//dispatch guide success
+						Toast.makeText(SelectGuideActivity.this, getString(R.string.selectguide_dispatch_success), Toast.LENGTH_SHORT).show();
 						groupInfo.setGuides(guides);
 						Intent data = new Intent();
 						Bundle bundle = new Bundle();
@@ -273,7 +273,8 @@ public class SelectGuideActivity extends BaseActivity{
 						SelectGuideActivity.this.finish();
 						
 					}else{
-						Toast.makeText(SelectGuideActivity.this, "≈≈Õ≈ ß∞‹", Toast.LENGTH_SHORT).show();
+						//dispatch guide failed
+						Toast.makeText(SelectGuideActivity.this, getString(R.string.selectguide_dispatch_failed), Toast.LENGTH_SHORT).show();
 						SelectGuideActivity.this.finish();
 					}
 				} catch (JSONException e) {

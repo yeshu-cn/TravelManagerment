@@ -14,7 +14,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.drawable.AnimationDrawable;
 import android.os.Bundle;
-import android.os.Handler;
 import android.support.v4.app.FragmentActivity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -56,8 +55,8 @@ public class GuideDispatchFragment extends BaseFragment {
 	private TextView loadingViewLable;
 	private ImageView loadingViewIc;
 	
-	private final int FIRST_PAGE = 1;//ÍÅ¶ÓÁĞ±íµÄµÚÒ»Ò³
-	private int CURRENT_PAGE = 1;	//ÒÑ¾­¼ÓÔØµ½µÄÒ³ÃæĞòºÅ
+	private final int FIRST_PAGE = 1;//é»˜è®¤æ˜¾ç¤ºç¬¬ä¸€é¡µçš„æ•°æ®
+	private int CURRENT_PAGE = 1;	//å½“å‰åŠ è½½åˆ°ç¬¬å‡ é¡µçš„æ•°æ®
 
 	public static GuideDispatchFragment newInstance() {
 		GuideDispatchFragment fragment = new GuideDispatchFragment();
@@ -65,7 +64,7 @@ public class GuideDispatchFragment extends BaseFragment {
 		return fragment;
 	}
 
-	/*****************ÉúÃüÖÜÆÚ²âÊÔ*********---------------------->****/
+	/*****************test fragment lifecycle*********---------------------->****/
 	
 	@Override
 	public void onAttach(Activity activity) {
@@ -171,13 +170,13 @@ public class GuideDispatchFragment extends BaseFragment {
 
 			@Override
 			public void onPullDownToRefresh(PullToRefreshBase refreshView) {
-				//ÏòÉÏÀ­»ñÈ¡×îĞÂÊı¾İ
+				//å‘ä¸‹æ‹‰çš„æ—¶å€™åˆ·æ–°æ•°æ®
 				refreshLatestData();
 			}
 
 			@Override
 			public void onPullUpToRefresh(PullToRefreshBase refreshView) {
-				//ÏòÏÂÀ­¼ÓÔØÏÂÒ»Ò³ÃæÊı¾İ
+				//å‘ä¸Šæ‹‰çš„æ—¶å€™åŠ è½½ä¸‹ä¸€é¡µçš„æ•°æ®
 				loadNextPageData();
 			}
 		});
@@ -205,16 +204,16 @@ public class GuideDispatchFragment extends BaseFragment {
 
 	private void initData() {
 		if(null == tourGroupDatas){
-			//¼ÓÔØÊı¾İ
+			//åŠ è½½æ•°æ®
 			loadData();
 		}else{
-			//Ö±½ÓÉèÖÃÏÔÊ¾ÏÖÓĞµÄÊı¾İ
+			//ç›´æ¥æ˜¾ç¤º
 			mAdapter.addData(tourGroupDatas);
 		}
 	}
 	
 	/**
-	 * Ë¢ĞÂÏÔÊ¾×îĞÂÊı¾İ
+	 * é‡æ–°è·å–åˆ·æ–°æ˜¾ç¤ºæœ€æ–°çš„æ•°æ®
 	 */
 	private void refreshLatestData(){
 		CURRENT_PAGE = FIRST_PAGE;
@@ -226,9 +225,9 @@ public class GuideDispatchFragment extends BaseFragment {
 					tourGroupDatas = getTourGroupsFromResponse(response);
 					mAdapter.refreshData(tourGroupDatas);
 					
-					//½áÊøË¢ĞÂ¶¯»­
+					//å…³é—­åˆ·æ–°çš„åŠ¨ç”»
 					mPullToRefreshListView.onRefreshComplete();
-					Toast.makeText(getActivity(), "Êı¾İË¢ĞÂÍê³É.", Toast.LENGTH_SHORT).show();
+					Toast.makeText(getActivity(), getString(R.string.dispatch_refreshdata_over), Toast.LENGTH_SHORT).show();
 				} catch (JSONException e) {
 					e.printStackTrace();
 				}
@@ -237,11 +236,11 @@ public class GuideDispatchFragment extends BaseFragment {
 	}
 	
 	/**
-	 * µÚÒ»´Î¼ÓÔØÊı¾İ
+	 * è·å–ç¬¬ä¸€é¡µçš„æ•°æ®
 	 */
 	private void loadData(){
 		showLoadingUI();
-		//´ÓÍøÂç»ñÈ¡Êı¾İ
+		
 		Api.getInstance().getTourGroupList(CURRENT_PAGE, new JsonHttpResponseHandler() {
 
 			@Override
@@ -259,7 +258,7 @@ public class GuideDispatchFragment extends BaseFragment {
 			@Override
 			public void onFailure(Throwable arg0, JSONObject arg1) {
 				hideLoadingUI();
-				Toast.makeText(getActivity(), "Êı¾İ¼ÓÔØÊ§°Ü£¡", Toast.LENGTH_SHORT).show();
+				Toast.makeText(getActivity(), getString(R.string.dispatch_getdata_failed), Toast.LENGTH_SHORT).show();
 			}
 			
 			
@@ -267,7 +266,7 @@ public class GuideDispatchFragment extends BaseFragment {
 	}
 	
 	/**
-	 * ¼ÓÔØ»ñÈ¡ÏÂÒ»Ò³ÃæÊı¾İ
+	 * åŠ è½½æ˜¾ç¤ºä¸‹ä¸€é¡µçš„æ•°æ®
 	 */
 	private void loadNextPageData(){
 		CURRENT_PAGE++;
@@ -278,16 +277,15 @@ public class GuideDispatchFragment extends BaseFragment {
 				try {
 					tourGroupDatas = getTourGroupsFromResponse(response);
 					if(tourGroupDatas.isEmpty()){
-						//Îª¿ÕËµÃ÷ÊÇ×îºóµÄÊı¾İÁË,CURRENT_PAGE²»ÔÚÔö¼Ó,ËùÒÔ-1£»
+						//è·å–çš„ä¸‹ä¸€é¡µæ•°æ®ä¸ºç©ºï¼Œå·²æ˜¯æœ€åçš„æ•°æ®ï¼Œæ‰€ä»¥å¾—æŠŠcurrent_pageå›å¤-1ï¼›
 						CURRENT_PAGE--;
-						Toast.makeText(getActivity(), "ÒÑÊÇ×îºóµÄÊı¾İ£¡", Toast.LENGTH_SHORT).show();
+						Toast.makeText(getActivity(), getString(R.string.dispatch_dataisover), Toast.LENGTH_SHORT).show();
 					}else{
 						mAdapter.addData(tourGroupDatas);
 					}
 										
-					//½áÊøË¢ĞÂ¶¯»­
+					//å…³é—­åŠ è½½åŠ¨ç”»
 					mPullToRefreshListView.onRefreshComplete();
-//					Toast.makeText(getActivity(), "Êı¾İ¼ÓÔØÍê³É.", Toast.LENGTH_SHORT).show();
 				} catch (JSONException e) {
 					e.printStackTrace();
 				}
@@ -333,7 +331,7 @@ public class GuideDispatchFragment extends BaseFragment {
 		AnimationDrawable animationDrawable = (AnimationDrawable) loadingViewIc
 				.getDrawable();
 		animationDrawable.start();
-		loadingViewLable.setText("Æ´Ãü»ñÈ¡Êı¾İÖĞ....");
+		loadingViewLable.setText(getString(R.string.dispatch_loading_data));
 		loadingView.setVisibility(View.VISIBLE);
 		listview.setVisibility(View.GONE);
 	}
@@ -353,7 +351,7 @@ public class GuideDispatchFragment extends BaseFragment {
 		private LayoutInflater inflater;
 
 		/**
-		 * ¼ÓÔØ¸ü¶àµÄÊı¾İÏÔÊ¾
+		 * æ·»åŠ æ˜¾ç¤ºæ•°æ®
 		 * @param _list
 		 */
 		public void addData(ArrayList<TourGroupInfo> _list) {
@@ -364,7 +362,7 @@ public class GuideDispatchFragment extends BaseFragment {
 		}
 		
 		/**
-		 * Ë¢ĞÂÊı¾İ
+		 * é‡æ–°åŠ è½½åˆ·æ–°æ˜¾ç¤ºæ•°æ®
 		 * @param _list
 		 */
 		public void refreshData(ArrayList<TourGroupInfo> _list) {
@@ -470,7 +468,7 @@ public class GuideDispatchFragment extends BaseFragment {
 
 	}
 
-	/*************** cardÀïÃæÒÑ°²ÅÅµÄµ¼ÓÎµÄÊÊÅäÆ÷ ******************/
+	/*************** cardï¿½ï¿½ï¿½ï¿½ï¿½Ñ°ï¿½ï¿½ÅµÄµï¿½ï¿½Îµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ******************/
 
 	private void updateTourGroupsInfo(TourGroupInfo info) {
 		TourGroupInfo tourGroupInfo;

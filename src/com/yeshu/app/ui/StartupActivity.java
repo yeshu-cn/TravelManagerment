@@ -34,11 +34,10 @@ public class StartupActivity extends BaseActivity{
 			TextView tv = (TextView)this.findViewById(R.id.splashVerText);
 			tv.setText("v" + pinfo.versionName + " Beta");
 		} catch (NameNotFoundException e1) {
-			// TODO ×Ô¶¯Éú³ÉµÄ catch ¿é
 			e1.printStackTrace();
 		}
 
-		//ÎªÁËÊÓ¾õĞ§¹û£¬ÈÃËüÔÚÆô¶¯Ò³ÃæÍ£Áô1Ãë
+		//UIçº¿ç¨‹ä¸­æ‰§è¡Œè·³è½¬
 		((MyApplication)getApplication()).runOnUIThreadDelayed(new Runnable() {
 			
 			@Override
@@ -55,8 +54,9 @@ public class StartupActivity extends BaseActivity{
 	}
 	
 	/**
-	 * ÅĞ¶ÏÊÇ·ñÒÑµÇÂ¼
-	 * @return	µÇÂ¼×´Ì¬·µ»Ø true,·´Ö®·µ»Øfalse
+	 * æ£€æŸ¥æ˜¯å¦ç™»å½•è¿‡
+	 * @return	ç™»å½•è¿‡è¿”å›true
+	 * 			æœªç™»å½•è¿‡è¿”å›false
 	 */
 	private boolean checkIsLogin(){
 		return !WebRestClient.getCookieStore().getCookies().isEmpty();
