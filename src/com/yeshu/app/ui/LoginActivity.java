@@ -93,11 +93,7 @@ public class LoginActivity extends BaseActivity{
 				try {
 					result = response.getInt("result");
 					if(result == Api.LOGIN_SUCCESS){	
-						//保存用户信息进入全局变量
-						User.getInstance().setUsername(response.getString("nickname"));
-						User.getInstance().setPhone(response.getString("phone"));
-						User.getInstance().setRolename(response.getString("rolename"));
-						
+	
 						Intent it = new Intent(LoginActivity.this, MainActivity.class);
 						startActivity(it);
 						LoginActivity.this.finish();
