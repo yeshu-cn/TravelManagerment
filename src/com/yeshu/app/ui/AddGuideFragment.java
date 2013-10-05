@@ -41,7 +41,7 @@ public class AddGuideFragment extends BaseFragment{
 		return view;
 	}
 	
-/********ÉúÃüÖÜÆÚ²âÊÔ--------------------------->********************/
+/********test fragment lifecycle--------------------------->********************/
 	
 	@Override
 	public void onAttach(Activity activity) {

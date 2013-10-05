@@ -68,7 +68,7 @@ public class GuideManagermentFragment extends BaseFragment {
 	}
 	
 	
-	/********�������ڲ���--------------------------->********************/
+	/********test fragment lifecycle--------------------------->********************/
 	
 	@Override
 	public void onAttach(Activity activity) {
@@ -182,8 +182,9 @@ public class GuideManagermentFragment extends BaseFragment {
 			int id = jObject.getInt("id");
 			String name = jObject.getString("name");
 			String phone = jObject.getString("phone");
-
-			list.add(new GuideInfo(id, name, phone));
+			String nickname = jObject.getString("nickname");
+    		
+    		list.add(new GuideInfo(id, name, phone, nickname));
 		}
 
 		return list;
@@ -236,7 +237,7 @@ public class GuideManagermentFragment extends BaseFragment {
 			}
 
 			final GuideInfo info = guideList.get(position);
-			holder.tvName.setText(info.getName());
+			holder.tvName.setText(info.getNickname());
 			holder.tvPhone.setText(info.getPhone());
 			holder.ivEdit.setVisibility(View.GONE);
 

@@ -96,7 +96,7 @@ public class LoginActivity extends BaseActivity{
 						//保存用户信息进入全局变量
 						User.getInstance().setUsername(response.getString("nickname"));
 						User.getInstance().setPhone(response.getString("phone"));
-						User.getInstance().setRolename("rolename");
+						User.getInstance().setRolename(response.getString("rolename"));
 						
 						Intent it = new Intent(LoginActivity.this, MainActivity.class);
 						startActivity(it);

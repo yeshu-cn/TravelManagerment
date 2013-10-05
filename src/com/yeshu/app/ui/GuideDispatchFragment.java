@@ -64,7 +64,7 @@ public class GuideDispatchFragment extends BaseFragment {
 		return fragment;
 	}
 
-	/*****************测试声明周期的打印*********---------------------->****/
+	/*****************test fragment lifecycle*********---------------------->****/
 	
 	@Override
 	public void onAttach(Activity activity) {

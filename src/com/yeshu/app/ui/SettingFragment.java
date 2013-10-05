@@ -42,15 +42,20 @@ public class SettingFragment extends BaseFragment{
 			
 			@Override
 			public void onClick(View arg0) {
-				//×¢ÏúÍË³ö³ÌÐò
-				Api.getInstance().logout(null);
-				getActivity().finish();  
-                System.exit(0); 
+				logoutAndExit();
 			}
 		});
 		return view;
 	}
     
+	/**
+	 * logout and exit application
+	 */
+	private void logoutAndExit(){
+		Api.getInstance().logout(null);
+		getActivity().finish();  
+        System.exit(0); 
+	}
 	
     
 }

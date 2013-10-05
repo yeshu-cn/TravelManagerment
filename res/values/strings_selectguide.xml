@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="selectguide_selectedguides">已选择的导游</string>
+    <string name="selectguide_ok">确认</string>
+    <string name="selectguide_cancel">取消</string>
+    <string name="selectguide_dispatch_success">操作成功!</string>
+    <string name="selectguide_dispatch_failed">操作失败!</string>
+</resources>

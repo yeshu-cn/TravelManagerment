@@ -21,18 +21,32 @@ public class GuideInfo implements Serializable{
 	private int id;
 	private String name;
 	private String phone;
+	private String nickname;
 	
 	
 
-	public GuideInfo(int id, String name, String phone) {
+	public GuideInfo(int id, String name, String phone, String nickname) {
 		super();
 		this.id = id;
 		this.name = name;
 		this.phone = phone;
+		this.nickname = nickname;
 	}
 
 	
 	
+	public String getNickname() {
+		return nickname;
+	}
+
+
+
+	public void setNickname(String nickname) {
+		this.nickname = nickname;
+	}
+
+
+
 	public int getId() {
 		return id;
 	}

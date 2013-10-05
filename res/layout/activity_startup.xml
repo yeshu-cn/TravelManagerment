@@ -23,7 +23,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="20dp"
-            android:text="江西赣之旅办公助手"
+            android:text="旅行社办公助手"
             android:textSize="25sp" />
 
         <TextView
