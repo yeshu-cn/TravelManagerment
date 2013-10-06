@@ -422,7 +422,8 @@ public class GuideDispatchFragment extends BaseFragment {
 
 				@Override
 				public void onClick(View arg0) {
-					Intent it = new Intent(ctx, SelectGuideActivity.class);
+					//Intent it = new Intent(ctx, SelectGuideActivity.class);
+					Intent it = new Intent(ctx, ChoiceGuideActivity.class);
 					Bundle bundle = new Bundle();
 					bundle.putSerializable("tourgroup", info);
 					it.putExtras(bundle);

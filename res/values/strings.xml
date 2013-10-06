@@ -6,5 +6,7 @@
     <string name="hello_world">Hello world!</string>
     <string name="drawer_open">Open navigation drawer</string>
     <string name="drawer_close">Close navigation drawer</string>
+    <string name="action_choiceguidemenu_cancel">取消选择</string>
+    <string name="action_choiceguidemenu_ok">提交排团</string>
 
 </resources>
