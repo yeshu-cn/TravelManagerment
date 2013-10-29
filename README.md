@@ -24,7 +24,7 @@ Acknowledgements
 
 It also uses many open source libraries such as:
 * [actionbarsherlock](https://github.com/JakeWharton/ActionBarSherlock)<br />
-* [pulltorefresh](https://github.com/johannilsson/android-pulltorefresh)<br />
+* [pulltorefresh](https://github.com/chrisbanes/Android-PullToRefresh)<br />
 * [viewpagerindicator](https://github.com/JakeWharton/Android-ViewPagerIndicator)<br />
 * [android-async-http](http://loopj.com/android-async-http/)<br />
 * [MultiChoiceAdapter](https://github.com/ManuelPeinado/MultiChoiceAdapter)<br />
